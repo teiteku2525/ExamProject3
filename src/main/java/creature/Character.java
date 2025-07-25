@@ -19,8 +19,9 @@ public abstract class Character implements Creature {
     public final boolean isAlive() {
         return getHp() > 0;
     }
-    public void showStatus() {
-        System.out.println(getName() + ":HP " + getHp());
+    public String showStatus() {
+        return getName() + ": HP " + getHp() ;
+
     }
     public void die() {
         System.out.println(getName() + "は死んでしまった！");

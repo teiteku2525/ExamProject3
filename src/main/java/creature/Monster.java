@@ -1,5 +1,7 @@
 package creature;
 
+import java.io.PrintWriter;
+
 public abstract class Monster implements Creature {
     private String name;
     private int hp;
@@ -24,8 +26,8 @@ public abstract class Monster implements Creature {
     public final boolean isAlive() {
         return hp > 0;
     }
-    public void showStatus() {
-        System.out.println(getName() + getSuffix() + ": HP" + getHp());
+    public String showStatus() {
+        return getName() + getSuffix() + ": HP" + getHp();
     }
 
     public void setName(String name){

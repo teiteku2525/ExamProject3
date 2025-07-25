@@ -4,6 +4,8 @@ import creature.Character;
 import creature.Creature;
 import weapon.Weapon;
 
+import java.io.PrintWriter;
+
 public class Wizard extends Character {
     int mp;
 
@@ -30,8 +32,8 @@ public class Wizard extends Character {
         target.setHp(target.getHp() - 3);
     }
 
-    public void showStatus() {
-        System.out.println(getName() + ":HP " + getHp() + " MP " + getMp());
+    public String showStatus() {
+        return getName() + ":HP " + getHp() + " MP " + getMp();
     }
 
 

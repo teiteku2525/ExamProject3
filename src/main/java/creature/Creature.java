@@ -3,7 +3,7 @@ package creature;
 public interface Creature {
     boolean isAlive();
 
-    void showStatus();
+    String showStatus();
 
     void attack(Creature target);
 
