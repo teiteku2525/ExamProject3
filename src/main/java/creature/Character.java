@@ -2,6 +2,8 @@ package creature;
 
 import weapon.Weapon;
 
+import java.io.PrintWriter;
+
 public abstract class Character implements Creature {
     private String name;
     private int hp;
@@ -23,8 +25,8 @@ public abstract class Character implements Creature {
         return getName() + ": HP " + getHp() ;
 
     }
-    public void die() {
-        System.out.println(getName() + "は死んでしまった！");
+    public void die(PrintWriter out) {
+        out.println(getName() + "は死んでしまった！");
     }
 
     public void setName(String name) {

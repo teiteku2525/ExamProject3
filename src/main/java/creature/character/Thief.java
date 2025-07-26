@@ -4,6 +4,8 @@ import creature.Character;
 import creature.Creature;
 import weapon.Weapon;
 
+import java.io.PrintWriter;
+
 public class Thief extends Character {
 
     private boolean guard;
@@ -11,23 +13,26 @@ public class Thief extends Character {
     public Thief(String name, int hp, Weapon weapon){
         super(name, hp, weapon);
     }
+    public Creature copy() {
+        return new Hero(this.getName(), this.getHp(),this.getWeapon());
+    }
 
-    public void attack(Creature target) {
+    public void attack(PrintWriter out, Creature target) {
         int damage = getWeapon().getDamage() * 2;
-        System.out.println(this.getName() + "は素早く2回攻撃した！");
-        System.out.println(getWeapon().getName() + getWeapon().attackMessage());
-        System.out.println(target.getName() + "に" + damage + "のダメージを与えた！");
+        out.println(this.getName() + "は素早く2回攻撃した！");
+        out.println(getWeapon().getName() + getWeapon().attackMessage());
+        out.println(target.getName() + "に" + damage + "のダメージを与えた！");
         target.setHp(target.getHp() - damage);
     }
 
-    public void guard() {
-        System.out.println(this.getName() + "は身を守っている！");
+    public void guard(PrintWriter out) {
+        out.println(this.getName() + "は身を守っている！");
         setGuard(true);
     }
 
-    public void setHp(int hp) {
+    public void setHp(PrintWriter out, int hp) {
         if (getGuard()) {
-            System.out.println("しかし、" + getName() + "は攻撃を回避し、ダメージが入らなかった！");
+            out.println("<br>しかし、" + getName() + "は攻撃を回避し、ダメージが入らなかった！");
             setGuard(false);
         }else {
             super.setHp(hp);

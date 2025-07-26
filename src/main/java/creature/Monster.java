@@ -16,11 +16,11 @@ public abstract class Monster implements Creature {
         setHp(hp);
     }
 
-    public void run() {
-        System.out.println(getName() + getSuffix() + "は逃げ出した");
+    public String run() {
+        return getName() + getSuffix() + "は逃げ出した";
     }
-    public void die() {
-        System.out.println(getName() + getSuffix() + "を倒した！");
+    public String die() {
+        return getName() + getSuffix() + "を倒した！";
     }
 
     public final boolean isAlive() {

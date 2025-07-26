@@ -9,17 +9,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56f7139e-6695-4dbc-a5fe-165ebfe5b332" name="変更" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/MonsterServlet.java" afterDir="false" />
+    <list default="true" id="56f7139e-6695-4dbc-a5fe-165ebfe5b332" name="変更" comment="途中経過">
+      <change afterPath="$PROJECT_DIR$/src/main/java/BattleEndServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/BattleServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CharacterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CharacterServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameMaster.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/HelloServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HelloServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SelectServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MonsterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MonsterServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/creature/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creature/Character.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/creature/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creature/Creature.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/creature/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creature/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/creature/character/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creature/character/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/creature/character/SuperHero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creature/character/SuperHero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/creature/character/Thief.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creature/character/Thief.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/creature/character/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creature/character/Wizard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/creature/monster/Goblin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creature/monster/Goblin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/creature/monster/Matango.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creature/monster/Matango.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/creature/monster/Slime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creature/monster/Slime.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,20 +41,26 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "teiteku2525"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;teiteku2525&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/teiteku2525/ExamProject3.git",
-    "accountId": "1c601cb6-ecac-4319-8aa7-310f1ecf2d7b"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/teiteku2525/ExamProject3.git&quot;,
+    &quot;accountId&quot;: &quot;1c601cb6-ecac-4319-8aa7-310f1ecf2d7b&quot;
   }
-}]]></component>
+}</component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -62,10 +75,13 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="30My8DZeJlBFbEmrpEAXV5fKyN0" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -74,6 +90,7 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "Tomcat サーバー.Tomcat 10.1.43.executor": "Run",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Users/user/IdeaProjects/ExamProject3/src/main/java",
@@ -110,6 +127,24 @@
       <predefined_log_file id="Tomcat Manager" />
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="57649" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
@@ -148,8 +183,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1753451575010</updated>
-      <workItem from="1753451575986" duration="10092000" />
+      <workItem from="1753451575986" duration="14310000" />
+      <workItem from="1753508012961" duration="35428000" />
     </task>
+    <task id="LOCAL-00001" summary="途中経過">
+      <option name="closed" value="true" />
+      <created>1753463374843</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1753463374843</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,5 +210,55 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="途中経過" />
+    <option name="LAST_COMMIT_MESSAGE" value="途中経過" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/CharacterServlet.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/CharacterServlet.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/CharacterServlet.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/CharacterServlet.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/CharacterServlet.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/CharacterServlet.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/CharacterServlet.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/CharacterServlet.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -70,23 +70,26 @@ public class HelloServlet extends HttpServlet {
 
 
         //session.setAttribute("names", names);//namesをサーバに保存
-        session.setAttribute("test", 5);
+        session.setAttribute("party", party);
+        session.setAttribute("enemy", enemy);
         //ブラウザに表示する内容
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
 
         //エンティティの状態表示
-        out.println("---味方パーティ---<br>");
+        out.println("---味方パーティ---<br><br>");
         for (Character member : party) {
-            out.println(member.showStatus() + "<br>");
+            out.println(member.showStatus() + "<br><br>");
         }
-        out.println("---敵グループ---<br>");
+        out.println("---敵グループ---<br><br>");
         for (Monster member: enemy) {
-            out.println(member.showStatus() + "<br>");
+            out.println(member.showStatus() + "<br><br>");
         }
+        out.println("<hr>");
 
-        out.println("<form action=\"CharacterServlet\">");
-        //out.println("誰に攻撃しますか？");
+        out.println("<form action=\"CharacterServlet\">"); //遷移先の情報
+        out.println("<input type=\"hidden\" name=\"beforeServlet\" value=\"hello\">");
+
         //out.println("<input type=\"text\" name=\"targetIndex\">");
         out.println("<button type=\"submit\">戦闘開始</button>");
         out.println("</form>");
