@@ -111,11 +111,11 @@ public class BattleServlet extends HttpServlet {//HTTP通信を処理するク�
             }
         }
         //状態の保存
-        /*
+
         session.setAttribute("partyB", afterParty);
         session.setAttribute("enemyB", afterEnemy);
         session.setAttribute("charIndexB", ++charIndex);
-        */
+
         session.setAttribute("test", 0);
 
         //エンティティの状態表示

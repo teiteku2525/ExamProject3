@@ -19,6 +19,7 @@ public class test extends HttpServlet {//HTTP通信を処理するクラスを�
         value = (Integer) session.getAttribute("test");
         value += 1;
         session.setAttribute("test", value);
+        ArrayList<Character> beforeParty = (ArrayList<Character>) session.getAttribute("party");
         //ブラウザに表示する内容
         PrintWriter out = response.getWriter();
         out.println("<html><body>");

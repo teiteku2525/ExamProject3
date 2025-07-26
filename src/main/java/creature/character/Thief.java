@@ -14,7 +14,7 @@ public class Thief extends Character {
         super(name, hp, weapon);
     }
     public Creature copy() {
-        return new Hero(this.getName(), this.getHp(),this.getWeapon());
+        return new Thief(this.getName(), this.getHp(),this.getWeapon());
     }
 
     public void attack(PrintWriter out, Creature target) {

@@ -19,17 +19,27 @@ public class MonsterServlet extends HttpServlet {//HTTP通信を処理するク�
         //javaで実行する内容
 
         HttpSession session = request.getSession();//sessionを使ってHelloServletで保存したnamesをサーバから取得する
-        ArrayList<Character> party = null;
-        ArrayList<Monster> enemy = null;
+        ArrayList<Character> beforeParty = null;
+        ArrayList<Character> afterParty = new ArrayList<Character>();
+
+        ArrayList<Monster> beforeEnemy = null;
+        ArrayList<Monster> afterEnemy = new ArrayList<Monster>();
         int charIndex = -1;
         try {
-            party = (ArrayList<Character>) session.getAttribute("partyB");
-            enemy =  (ArrayList<Monster>) session.getAttribute("enemyB");
+            beforeParty = (ArrayList<Character>) session.getAttribute("partyB");
+            beforeEnemy = (ArrayList<Monster>) session.getAttribute("enemyB");
+            charIndex = (Integer) session.getAttribute("charIndexB");
+            for (Character before :  beforeParty) {
+                afterParty.add((Character) before.copy());
+            }
+            for (Monster before :  beforeEnemy) {
+                afterEnemy.add((Monster) before.copy());
+            }
             charIndex = (Integer) session.getAttribute("charIndexB");
         } catch (ClassCastException e ) {
             System.out.println("データの受け取りに失敗:" + e);
         }
-        if (party == null || enemy == null || charIndex < 0) {
+        if (afterParty == null || afterEnemy == null || charIndex < 0) {
             throw new NullPointerException("データの受け取りに失敗したため、動作を停止します");
         }
 
@@ -38,34 +48,34 @@ public class MonsterServlet extends HttpServlet {//HTTP通信を処理するク�
         out.println("<html><body>");
 
         out.println("敵のターン");
-        for(Monster actEm: enemy) {
-            int hitChar = (int)(Math.random() * party.size());
-            actEm.attack(out,party.get(hitChar));
-            if (damageShock(out,party.get(hitChar))) {
-                party.remove(hitChar);
+        for(Monster actEm: afterEnemy) {
+            int hitChar = (int)(Math.random() * afterParty.size());
+            actEm.attack(out,afterParty.get(hitChar));
+            if (damageShock(out,afterParty.get(hitChar))) {
+                afterParty.remove(hitChar);
             }
             out.println("</p>");
-            if (party.isEmpty()) {//要警戒-->途中でWipeOut
+            if (afterParty.isEmpty()) {//要警戒-->途中でWipeOut
                 break;
             }
         }
         //状態の保存
-        session.setAttribute("partyA", party);
-        session.setAttribute("enemyA", enemy);
+        session.setAttribute("partyA", afterParty);
+        session.setAttribute("enemyA", afterEnemy);
         session.setAttribute("charIndexA", 0);
 
         //エンティティの状態表示
         out.println("<hr>");
         out.println("---味方パーティ---<br><br>");
-        for (Character member : party) {
+        for (Character member : afterParty) {
             out.println(member.showStatus() + "<br><br>");
         }
         out.println("---敵グループ---<br><br>");
-        for (Monster member : enemy) {
+        for (Monster member : afterEnemy) {
             out.println(member.showStatus() + "<br><br>");
         }
         out.println("<hr>");
-        if (party.isEmpty()) {
+        if (afterParty.isEmpty()) {
             out.println("<form action=\"BattleEndServlet\">");
             out.println("<input type=\"hidden\" name=\"beforeServlet\" value=\"battle\">");
             out.println("<button type=\"submit\">そして…</button>");

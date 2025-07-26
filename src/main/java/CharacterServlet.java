@@ -21,22 +21,37 @@ public class CharacterServlet extends HttpServlet {//HTTP通信を処理する�
         int charIndex = 0;
 
         HttpSession session = request.getSession();//sessionを使ってHelloServletで保存したnamesをサーバから取得する
-        ArrayList<Character> party = null;
-        ArrayList<Monster> enemy = null;
+        ArrayList<Character> beforeParty = null;
+        ArrayList<Character> afterParty = new ArrayList<Character>();
+
+        ArrayList<Monster> beforeEnemy = null;
+        ArrayList<Monster> afterEnemy = new ArrayList<Monster>();
         try {
             String source = request.getParameter("beforeServlet");
             if (source.equals("battle")) {
-                party = (ArrayList<Character>) session.getAttribute("partyB");
-                enemy =  (ArrayList<Monster>) session.getAttribute("enemyB");
+                beforeParty = (ArrayList<Character>) session.getAttribute("partyB");
+                beforeEnemy =  (ArrayList<Monster>) session.getAttribute("enemyB");
+                charIndex = (Integer) session.getAttribute("charIndexB");
             }else if(source.equals("hello")){
-                party = (ArrayList<Character>) session.getAttribute("party");
-                enemy = (ArrayList<Monster>) session.getAttribute("enemy");
+                beforeParty = (ArrayList<Character>) session.getAttribute("party");
+                beforeEnemy = (ArrayList<Monster>) session.getAttribute("enemy");
+            }else if(source.equals("monster")){
+                beforeParty = (ArrayList<Character>) session.getAttribute("partyA");
+                beforeEnemy =  (ArrayList<Monster>) session.getAttribute("enemyA");
+                charIndex = (Integer) session.getAttribute("charIndexA");
+
             }
         } catch (ClassCastException e ) {
             System.out.println("データの受け取りに失敗:" + e);
         }
-        if (party == null || enemy == null) {
+        if (beforeParty == null || beforeEnemy == null) {
             throw new NullPointerException("データの受け取りに失敗したため、動作を停止します");
+        }
+        for (Character before :  beforeParty) {
+            afterParty.add((Character) before.copy());
+        }
+        for (Monster before :  beforeEnemy) {
+            afterEnemy.add((Monster) before.copy());
         }
 
 
@@ -63,22 +78,22 @@ public class CharacterServlet extends HttpServlet {//HTTP通信を処理する�
 
         out.println("<html><body>");
 
-        session.setAttribute("partyA", party);
-        session.setAttribute("enemyA", enemy);
+        session.setAttribute("partyA", afterParty);
+        session.setAttribute("enemyA", afterEnemy);
         session.setAttribute("charIndexA", charIndex);
         //エンティティの状態表示
         out.println("---味方パーティ---<br><br>");
-        for (Character member : party) {
+        for (Character member : afterParty) {
             out.println(member.showStatus() + "<br><br>");
         }
         out.println("---敵グループ---<br><br>");
-        for (Monster member : enemy) {
+        for (Monster member : afterEnemy) {
             out.println(member.showStatus() + "<br><br>");
         }
         out.println("<hr>");
 
 
-        Character actChar = party.get(charIndex);
+        Character actChar = afterParty.get(charIndex);
         out.println(actChar.getName() + "の行動");
         out.println("<form action=\"BattleServlet\">");
         out.println("<input type=\"hidden\" name=\"beforeServlet\" value=\"character\">");
@@ -115,7 +130,7 @@ public class CharacterServlet extends HttpServlet {//HTTP通信を処理する�
 
         out.println("<select name=\"targetIndex\">");
         int i =0;
-        for (Monster select :enemy) {
+        for (Monster select :afterEnemy) {
             out.println("<option value=\"" + i + "\">" + select.getName() + select.getSuffix() + "</option>");
             i++;
         }

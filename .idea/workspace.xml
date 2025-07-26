@@ -9,24 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56f7139e-6695-4dbc-a5fe-165ebfe5b332" name="変更" comment="途中経過">
-      <change afterPath="$PROJECT_DIR$/src/main/java/BattleEndServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/BattleServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/test.java" afterDir="false" />
+    <list default="true" id="56f7139e-6695-4dbc-a5fe-165ebfe5b332" name="変更" comment="リロードによるリストの変数が変化してしまうバグをBattleServletの範囲内で修正">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/BattleServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/BattleServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CharacterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CharacterServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/HelloServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HelloServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MonsterServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MonsterServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/creature/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creature/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/creature/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creature/Creature.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/creature/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creature/Monster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/creature/character/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creature/character/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/creature/character/SuperHero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creature/character/SuperHero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/creature/character/Thief.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creature/character/Thief.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/creature/character/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creature/character/Wizard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/creature/monster/Goblin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creature/monster/Goblin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/creature/monster/Matango.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creature/monster/Matango.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/creature/monster/Slime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creature/monster/Slime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +80,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "Tomcat サーバー.Tomcat 10.1.43.executor": "Run",
+    "Tomcat サーバー.Tomcat 10.1.43.executor": "Debug",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/Users/user/IdeaProjects/ExamProject3/src/main/java",
     "node.js.detected.package.eslint": "true",
@@ -184,7 +173,7 @@
       <option name="presentableId" value="Default" />
       <updated>1753451575010</updated>
       <workItem from="1753451575986" duration="14310000" />
-      <workItem from="1753508012961" duration="35428000" />
+      <workItem from="1753508012961" duration="39149000" />
     </task>
     <task id="LOCAL-00001" summary="途中経過">
       <option name="closed" value="true" />
@@ -194,7 +183,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753463374843</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="リロードによるリストの変数が変化してしまうバグをBattleServletの範囲内で修正">
+      <option name="closed" value="true" />
+      <created>1753544737197</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1753544737197</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,50 +210,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="途中経過" />
-    <option name="LAST_COMMIT_MESSAGE" value="途中経過" />
+    <MESSAGE value="リロードによるリストの変数が変化してしまうバグをBattleServletの範囲内で修正" />
+    <option name="LAST_COMMIT_MESSAGE" value="リロードによるリストの変数が変化してしまうバグをBattleServletの範囲内で修正" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/CharacterServlet.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/CharacterServlet.java</url>
-          <line>29</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/CharacterServlet.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/CharacterServlet.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/CharacterServlet.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/CharacterServlet.java</url>
-          <line>66</line>
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/CharacterServlet.java</url>
-          <line>67</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/CharacterServlet.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="43" />
+          <url>file://$PROJECT_DIR$/src/main/java/test.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="45" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
