@@ -70,8 +70,10 @@ public class HelloServlet extends HttpServlet {
 
 
         //session.setAttribute("names", names);//namesをサーバに保存
-        session.setAttribute("party", party);
-        session.setAttribute("enemy", enemy);
+
+        session.setAttribute("party_0", party);
+        session.setAttribute("enemy_0", enemy);
+        session.setAttribute("charIndex_0",0);
         //ブラウザに表示する内容
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
@@ -89,6 +91,7 @@ public class HelloServlet extends HttpServlet {
 
         out.println("<form action=\"CharacterServlet\">"); //遷移先の情報
         out.println("<input type=\"hidden\" name=\"beforeServlet\" value=\"hello\">");
+        out.println("<input type=\"hidden\" name=\"dataPos\" value=\"0\">");
 
         //out.println("<input type=\"text\" name=\"targetIndex\">");
         out.println("<button type=\"submit\">戦闘開始</button>");

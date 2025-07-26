@@ -19,30 +19,30 @@ public class BattleServlet extends HttpServlet {//HTTP通信を処理するク�
         //javaで実行する内容
 
         HttpSession session = request.getSession();//sessionを使ってHelloServletで保存したnamesをサーバから取得する
+
+        int dataPos = Integer.parseInt(request.getParameter("dataPos"));
+        int charIndex = -1;
         ArrayList<Character> beforeParty = null;
         ArrayList<Character> afterParty = new ArrayList<Character>();
-
         ArrayList<Monster> beforeEnemy = null;
         ArrayList<Monster> afterEnemy = new ArrayList<Monster>();
-        int charIndex = -1;
+
         try {
-            String source = request.getParameter("beforeServlet");
-            if (source.equals("character")) {
-                beforeParty = (ArrayList<Character>) session.getAttribute("partyA");
-                beforeEnemy = (ArrayList<Monster>) session.getAttribute("enemyA");
-                charIndex = (Integer) session.getAttribute("charIndexA");
-                for (Character before :  beforeParty) {
-                    afterParty.add((Character) before.copy());
-                }
-                for (Monster before :  beforeEnemy) {
-                    afterEnemy.add((Monster) before.copy());
-                }
-            }
+            beforeParty = (ArrayList<Character>) session.getAttribute("party_" +dataPos);
+            beforeEnemy =  (ArrayList<Monster>) session.getAttribute("enemy_"+dataPos);
+            charIndex = (Integer) session.getAttribute("charIndex_"+dataPos);
+
         } catch (ClassCastException e ) {
             System.out.println("データの受け取りに失敗:" + e);
         }
-        if (afterParty == null || afterEnemy == null || charIndex < 0) {
+        if (beforeParty == null || beforeEnemy == null) {
             throw new NullPointerException("データの受け取りに失敗したため、動作を停止します");
+        }
+        for (Character before :  beforeParty) {
+            afterParty.add((Character) before.copy());
+        }
+        for (Monster before :  beforeEnemy) {
+            afterEnemy.add((Monster) before.copy());
         }
 
         String actIndex = request.getParameter("actIndex");
@@ -110,11 +110,11 @@ public class BattleServlet extends HttpServlet {//HTTP通信を処理するク�
                     break;
             }
         }
-        //状態の保存
 
-        session.setAttribute("partyB", afterParty);
-        session.setAttribute("enemyB", afterEnemy);
-        session.setAttribute("charIndexB", ++charIndex);
+        //状態の保存
+        session.setAttribute("party_" +(dataPos+1), afterParty);
+        session.setAttribute("enemy_" +(dataPos+1), afterEnemy);
+        session.setAttribute("charIndex_" +(dataPos+1) , ++charIndex);
 
         session.setAttribute("test", 0);
 
@@ -132,23 +132,27 @@ public class BattleServlet extends HttpServlet {//HTTP通信を処理するク�
         if (afterEnemy.isEmpty()) {
             out.println("<form action=\"BattleEndServlet\">");
             out.println("<input type=\"hidden\" name=\"beforeServlet\" value=\"battle\">");
+            out.println("<input type=\"hidden\" name=\"dataPos\" value=\"" + (dataPos+1) + "\">");
             out.println("<input type=\"hidden\" name=\"result\" value=\"win\">");
             out.println("<button type=\"submit\">そして…！</button>");
             out.println("</form>");
         }else if (afterParty.isEmpty()) {
             out.println("<form action=\"BattleEndServlet\">");
             out.println("<input type=\"hidden\" name=\"beforeServlet\" value=\"battle\">");
+            out.println("<input type=\"hidden\" name=\"dataPos\" value=\"" + (dataPos+1) + "\">");
             out.println("<input type=\"hidden\" name=\"result\" value=\"lose\">");
             out.println("<button type=\"submit\">そして…</button>");
             out.println("</form>");
         }else if (charIndex < afterParty.size()) {
             out.println("<form action=\"CharacterServlet\">");
             out.println("<input type=\"hidden\" name=\"beforeServlet\" value=\"battle\">");
+            out.println("<input type=\"hidden\" name=\"dataPos\" value=\"" + (dataPos+1) + "\">");
             out.println("<button type=\"submit\">次のキャラクターへ</button>");
             out.println("</form>");
         }else {
             out.println("<form action=\"MonsterServlet\">");
             out.println("<input type=\"hidden\" name=\"beforeServlet\" value=\"battle\">");
+            out.println("<input type=\"hidden\" name=\"dataPos\" value=\"" + (dataPos+1) + "\">");
             out.println("<button type=\"submit\">敵のターンへ進む</button>");
             out.println("</form>");
         }

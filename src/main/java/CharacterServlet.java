@@ -18,29 +18,20 @@ public class CharacterServlet extends HttpServlet {//HTTP通信を処理する�
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
         //javaで実行する内容
-        int charIndex = 0;
-
         HttpSession session = request.getSession();//sessionを使ってHelloServletで保存したnamesをサーバから取得する
+
+        int dataPos = Integer.parseInt(request.getParameter("dataPos"));
+        int charIndex = -1;
         ArrayList<Character> beforeParty = null;
         ArrayList<Character> afterParty = new ArrayList<Character>();
-
         ArrayList<Monster> beforeEnemy = null;
         ArrayList<Monster> afterEnemy = new ArrayList<Monster>();
-        try {
-            String source = request.getParameter("beforeServlet");
-            if (source.equals("battle")) {
-                beforeParty = (ArrayList<Character>) session.getAttribute("partyB");
-                beforeEnemy =  (ArrayList<Monster>) session.getAttribute("enemyB");
-                charIndex = (Integer) session.getAttribute("charIndexB");
-            }else if(source.equals("hello")){
-                beforeParty = (ArrayList<Character>) session.getAttribute("party");
-                beforeEnemy = (ArrayList<Monster>) session.getAttribute("enemy");
-            }else if(source.equals("monster")){
-                beforeParty = (ArrayList<Character>) session.getAttribute("partyA");
-                beforeEnemy =  (ArrayList<Monster>) session.getAttribute("enemyA");
-                charIndex = (Integer) session.getAttribute("charIndexA");
 
-            }
+        try {
+            beforeParty = (ArrayList<Character>) session.getAttribute("party_" +dataPos);
+            beforeEnemy =  (ArrayList<Monster>) session.getAttribute("enemy_"+dataPos);
+            charIndex = (Integer) session.getAttribute("charIndex_"+dataPos);
+
         } catch (ClassCastException e ) {
             System.out.println("データの受け取りに失敗:" + e);
         }
@@ -55,22 +46,9 @@ public class CharacterServlet extends HttpServlet {//HTTP通信を処理する�
         }
 
 
-        String source = request.getParameter("beforeServlet");
-        if (source.equals("battle")) {
-            charIndex = (Integer) session.getAttribute("charIndexB");
-            }
-        System.out.println(charIndex);
-
-
-
-
-        //int ttest =  (Integer) session.getAttribute("test");
-        //int targetIndex = Integer.parseInt(request.getParameter("targetIndex"));//intに変換する(NumberFormatExceptionが発生する可能性あり)
-        //session.setAttribute("names", names);//変更した内容を再度保存する
-
-
-
-
+        session.setAttribute("party_" +(dataPos+1), afterParty);
+        session.setAttribute("enemy_" +(dataPos+1), afterEnemy);
+        session.setAttribute("charIndex_" +(dataPos+1) , charIndex);
 
 
         //ブラウザに表示する内容
@@ -78,9 +56,6 @@ public class CharacterServlet extends HttpServlet {//HTTP通信を処理する�
 
         out.println("<html><body>");
 
-        session.setAttribute("partyA", afterParty);
-        session.setAttribute("enemyA", afterEnemy);
-        session.setAttribute("charIndexA", charIndex);
         //エンティティの状態表示
         out.println("---味方パーティ---<br><br>");
         for (Character member : afterParty) {
@@ -97,6 +72,7 @@ public class CharacterServlet extends HttpServlet {//HTTP通信を処理する�
         out.println(actChar.getName() + "の行動");
         out.println("<form action=\"BattleServlet\">");
         out.println("<input type=\"hidden\" name=\"beforeServlet\" value=\"character\">");
+        out.println("<input type=\"hidden\" name=\"dataPos\" value=\"" + (dataPos+1) + "\">");
 
         if (actChar instanceof SuperHero) {
 

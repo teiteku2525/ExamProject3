@@ -14,25 +14,34 @@ public class BattleEndServlet extends HttpServlet {//HTTP通信を処理する�
         //javaで実行する内容
 
         HttpSession session = request.getSession();//sessionを使ってHelloServletで保存したnamesをサーバから取得する
-        ArrayList<Character> party = null;
-        ArrayList<Monster> enemy = null;
+
+
 
         String result = request.getParameter("result");
         String source = request.getParameter("beforeServlet");
-        if (source.equals("battle")) {
-            try {
-                party = (ArrayList<Character>) session.getAttribute("partyB");
-                enemy =  (ArrayList<Monster>) session.getAttribute("enemyB");
-            } catch (ClassCastException e ) {
-                System.out.println("データの受け取りに失敗:" + e);
-            }
-        }else if (source.equals("character")) {
-            try {
-                party = (ArrayList<Character>) session.getAttribute("partyA");
-                enemy =  (ArrayList<Monster>) session.getAttribute("enemyA");
-            } catch (ClassCastException e ) {
-                System.out.println("データの受け取りに失敗:" + e);
-            }
+        int dataPos = Integer.parseInt(request.getParameter("dataPos"));
+        int charIndex = -1;
+        ArrayList<Character> beforeParty = null;
+        ArrayList<Character> afterParty = new ArrayList<Character>();
+        ArrayList<Monster> beforeEnemy = null;
+        ArrayList<Monster> afterEnemy = new ArrayList<Monster>();
+
+        try {
+            beforeParty = (ArrayList<Character>) session.getAttribute("party_" +dataPos);
+            beforeEnemy =  (ArrayList<Monster>) session.getAttribute("enemy_"+dataPos);
+            charIndex = (Integer) session.getAttribute("charIndex_"+dataPos);
+
+        } catch (ClassCastException e ) {
+            System.out.println("データの受け取りに失敗:" + e);
+        }
+        if (beforeParty == null || beforeEnemy == null) {
+            throw new NullPointerException("データの受け取りに失敗したため、動作を停止します");
+        }
+        for (Character before :  beforeParty) {
+            afterParty.add((Character) before.copy());
+        }
+        for (Monster before :  beforeEnemy) {
+            afterEnemy.add((Monster) before.copy());
         }
 
 
@@ -41,10 +50,7 @@ public class BattleEndServlet extends HttpServlet {//HTTP通信を処理する�
         out.println("<html><body>");
 
         if (result.equals("win")) {
-            if (party == null) {
-                throw new NullPointerException("データの受け取りに失敗したため、動作を停止します");
-            }
-            out.println("敵を全て倒した！" + party.getFirst().getName() + "達は勝利した！");
+            out.println("敵を全て倒した！" + afterParty.getFirst().getName() + "達は勝利した！");
         }else if(result.equals("lose")) {
             out.println("味方パーティは全滅してしまった");
         }
